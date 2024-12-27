@@ -1,0 +1,3 @@
+rootProject.name = 'managerRestaurant'
+include 'boot', 'common', 'application', 'domain', 'infrastructure'
+
