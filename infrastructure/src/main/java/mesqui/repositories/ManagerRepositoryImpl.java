@@ -40,4 +40,18 @@ public class ManagerRepositoryImpl implements ManagerRepository{
         var restaurantTable = jdbcTemplate.query(sql, new RestaurantTableRowMapper());
         return RestaurantTable.from(restaurantTable.getFirst());
     }
+
+    @Override
+    public void updateTable(Table table) {
+        String sql = String.format("UPDATE restaurant_tables SET minSeats = %d, maxSeats = %d, location = '%s'" +
+                        "WHERE id = %d",
+                table.getMinSeats(), table.getMaxSeats(), table.getLocation().name(), table.getId());
+        jdbcTemplate.update(sql);
+    }
+
+    @Override
+    public void deleteTable(Long id) {
+        String sql = String.format("DELETE restaurant_tables WHERE id = %d", id);
+        jdbcTemplate.update(sql);
+    }
 }

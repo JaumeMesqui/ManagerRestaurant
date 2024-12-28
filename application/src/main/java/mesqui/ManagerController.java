@@ -2,7 +2,7 @@ package mesqui;
 
 import mesqui.constants.LocationEnum;
 import mesqui.dto.Table;
-import mesqui.services.ManagerService;
+import mesqui.services.manager.ManagerService;
 import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
@@ -34,10 +34,12 @@ public class ManagerController {
     }
 
     @PostMapping("/table/{id}")
-    public void modifyTable(String id) {
+    public void modifyTable(@RequestBody Table table) {
+        managerService.modifyTable(table.getMinSeats(), table.getMaxSeats(), LocationEnum.INDOOR);
     }
 
-    @DeleteMapping("/{id}")
-    public void removeTable() {
+    @DeleteMapping("/table/{id}")
+    public void removeTable(@PathVariable Long id) {
+        managerService.removeTable(id);
     }
 }

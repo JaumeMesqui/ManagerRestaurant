@@ -2,7 +2,7 @@ package mesqui;
 
 import mesqui.constants.LocationEnum;
 import mesqui.dto.Table;
-import mesqui.services.ManagerService;
+import mesqui.services.manager.ManagerService;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 import org.mockito.Mock;
@@ -41,5 +41,16 @@ public class ManagerControllerTest {
         assertEquals(1, tables.getFirst().getMinSeats());
         assertEquals(2, tables.getFirst().getMaxSeats());
         assertEquals(LocationEnum.INDOOR, tables.getFirst().getLocation());
+    }
+
+    @Test
+    void obtainTable() {
+        when(managerService.obtainATable(anyLong()))
+                .thenReturn(new mesqui.model.Table(1, 2, LocationEnum.INDOOR));
+        var table = managerController.obtainTable(1L);
+        verify(managerService, times(1)).obtainATable(anyLong());
+        assertEquals(1, table.getMinSeats());
+        assertEquals(2, table.getMaxSeats());
+        assertEquals(LocationEnum.INDOOR, table.getLocation());
     }
 }

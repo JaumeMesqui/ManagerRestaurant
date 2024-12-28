@@ -1,8 +1,8 @@
 package mesqui;
 
 import mesqui.repositories.ManagerRepository;
-import mesqui.services.ManagerService;
-import mesqui.services.ManagerServiceImpl;
+import mesqui.services.manager.ManagerService;
+import mesqui.services.manager.ManagerServiceImpl;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
 

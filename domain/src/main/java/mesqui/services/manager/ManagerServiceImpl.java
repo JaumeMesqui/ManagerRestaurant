@@ -1,4 +1,4 @@
-package mesqui.services;
+package mesqui.services.manager;
 
 import mesqui.constants.LocationEnum;
 import mesqui.model.Table;
@@ -28,5 +28,16 @@ public class ManagerServiceImpl implements ManagerService {
     @Override
     public Table obtainATable(Long id) {
         return managerRepository.getATable(id);
+    }
+
+    @Override
+    public void modifyTable(int minSeats, int maxSeats, LocationEnum location) {
+        Table table = new Table(minSeats, maxSeats, location);
+        managerRepository.updateTable(table);
+    }
+
+    @Override
+    public void removeTable(Long id) {
+        managerRepository.deleteTable(id);
     }
 }
