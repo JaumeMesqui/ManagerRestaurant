@@ -10,6 +10,6 @@ public interface ManagerService {
     void createTable(int minSeats, int maxSeats, LocationEnum location);
     List<Table> obtainAllTables();
     Table obtainATable(Long id);
-    void modifyTable(int minSeats, int maxSeats, LocationEnum location);
+    void modifyTable(Long id, int minSeats, int maxSeats, LocationEnum location);
     void removeTable(Long id);
 }

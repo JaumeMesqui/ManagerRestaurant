@@ -29,7 +29,8 @@ public class ManagerControllerTest {
     @Test
     void createTable() {
         managerController.createTable(new Table(1, 1, 2, LocationEnum.INDOOR));
-        verify(managerService, times(1)).createTable(1, 2, LocationEnum.INDOOR);
+        verify(managerService, times(1))
+                .createTable(1, 2, LocationEnum.INDOOR);
     }
 
     @Test
@@ -52,5 +53,18 @@ public class ManagerControllerTest {
         assertEquals(1, table.getMinSeats());
         assertEquals(2, table.getMaxSeats());
         assertEquals(LocationEnum.INDOOR, table.getLocation());
+    }
+
+    @Test
+    void modifyTable() {
+        managerController.modifyTable(new Table(1, 1, 2, LocationEnum.INDOOR));
+        verify(managerService, times(1))
+                .modifyTable(1L, 1, 2, LocationEnum.INDOOR);
+    }
+
+    @Test
+    void removeTable() {
+        managerController.removeTable(1L);
+        verify(managerService, times(1)).removeTable(1L);
     }
 }

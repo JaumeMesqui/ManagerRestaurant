@@ -31,8 +31,8 @@ public class ManagerServiceImpl implements ManagerService {
     }
 
     @Override
-    public void modifyTable(int minSeats, int maxSeats, LocationEnum location) {
-        Table table = new Table(minSeats, maxSeats, location);
+    public void modifyTable(Long id, int minSeats, int maxSeats, LocationEnum location) {
+        Table table = new Table(id, minSeats, maxSeats, location);
         managerRepository.updateTable(table);
     }
 

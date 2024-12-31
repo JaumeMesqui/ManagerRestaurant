@@ -35,7 +35,7 @@ public class ManagerController {
 
     @PostMapping("/table/{id}")
     public void modifyTable(@RequestBody Table table) {
-        managerService.modifyTable(table.getMinSeats(), table.getMaxSeats(), LocationEnum.INDOOR);
+        managerService.modifyTable(table.getId(), table.getMinSeats(), table.getMaxSeats(), LocationEnum.INDOOR);
     }
 
     @DeleteMapping("/table/{id}")
